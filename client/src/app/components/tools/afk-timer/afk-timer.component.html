@@ -1,0 +1,21 @@
+<div class="timer-container" [ngStyle]="{ backgroundColor: bgColor }">
+  <br />
+  <span class="spacer"></span>
+  <div class="border">
+    <input
+      type="number"
+      placeholder="Enter time in seconds"
+      [(ngModel)]="inputSeconds"
+      [disabled]="isStarted"
+    />
+    <div *ngIf="!showContinueReset">
+      <button (click)="startTimer()" *ngIf="!isStarted">Start</button>
+      <button (click)="stopTimer()" *ngIf="isStarted">Stop</button>
+    </div>
+    <div *ngIf="showContinueReset">
+      <button (click)="continueTimer()">Continue</button>
+      <button (click)="resetPage()">Reset</button>
+    </div>
+    <p *ngIf="elapsedTime">Elapsed Time: {{ elapsedTime }} seconds</p>
+  </div>
+</div>
